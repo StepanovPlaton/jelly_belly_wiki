@@ -13,7 +13,7 @@
 
 
 ## О проекте
-- Написан за 10 часов , в качестве тестового задания перед собеседованием
+- Написан за 10 часов, в качестве тестового задания перед собеседованием
 - Основан на открытом API https://jelly-belly-wiki.netlify.app
 - Server Side Rendering (SSR) - в ответ на запрос пользователя сервер отправляет сгенерированный HTML заполненный контентом, а затем загружается весь необходимый для работы JavaScript. Для пользователя страница загружается быстрее
 - Search Engine Optimization (SEO) - благодаря SSR поисковые боты могут индексировать страницы (в отличии от приложений написанных с использованием SPA подхода)
@@ -35,7 +35,7 @@
 ## Скриншоты
 
 #### Desktop (HD+)
-|![](./screenshots/HD%2B_root_dark.png)|![](./screenshots/HD%2B_root_light.png)|
+|![](./screenshots/HD%2B_root_light.png)|![](./screenshots/HD%2B_root_dark.png)|
 |-|-|
 |![](./screenshots/HD%2B_beans_light.png)|![](./screenshots/HD%2B_recipes_dark.png)|
 |![](./screenshots/HD%2B_bean_light.png)|![](./screenshots/HD%2B_recipe_dark.png)|
