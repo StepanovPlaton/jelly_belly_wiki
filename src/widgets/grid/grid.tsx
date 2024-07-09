@@ -9,7 +9,6 @@ import {
 import { ItemCard } from "@/features/itemCard";
 import React, { useRef } from "react";
 import { useState } from "react";
-import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 
 export const Grid = <U extends ItemType>({
   firstPage,
@@ -30,7 +29,12 @@ export const Grid = <U extends ItemType>({
   ) => {
     const { scrollTop, scrollHeight, clientHeight } =
       e.target as HTMLDivElement;
-    if ((scrollTop + clientHeight) / scrollHeight > 0.5) {
+    if (
+      firstItemRef &&
+      firstItemRef.current &&
+      scrollHeight - (scrollTop + clientHeight) <
+        firstItemRef.current?.clientHeight * 3
+    ) {
       if (!loadingPage) {
         changeLoadingPage(true);
         setTimeout(() => changeLoadingPage(false), 1000);

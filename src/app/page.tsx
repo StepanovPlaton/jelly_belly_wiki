@@ -4,10 +4,10 @@ import { SectionService, SectionType } from "@/features/sections";
 import { Metadata } from "next";
 import Link from "next/link";
 
+export const revalidate = 0;
 export const metadata: Metadata = {
-  title: ".Torrent",
-  description:
-    ".Torrent - сервис обмена .torrent файлами видеоигр, фильмов и аудиокниг",
+  title: "JellyBelly Wiki",
+  description: "Information about JellyBelly beans",
 };
 
 export default async function Home() {

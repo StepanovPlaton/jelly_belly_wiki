@@ -37,3 +37,4 @@ export const ItemCard = React.forwardRef<HTMLDivElement, { item: ItemType }>(
     return ItemTypeToCard(item, ref);
   }
 );
+ItemCard.displayName = "ItemCard";

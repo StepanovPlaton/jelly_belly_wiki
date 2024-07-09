@@ -1,7 +1,4 @@
-import { CombinationType, TypesOfItems } from "@/entities/item";
-import Link from "next/link";
-import { SectionService } from "@/features/sections";
-import Image from "next/image";
+import { CombinationType } from "@/entities/item";
 import React from "react";
 
 export const CombinationCard = React.forwardRef<
@@ -23,3 +20,4 @@ export const CombinationCard = React.forwardRef<
     </div>
   );
 });
+CombinationCard.displayName = "CombinationCard";

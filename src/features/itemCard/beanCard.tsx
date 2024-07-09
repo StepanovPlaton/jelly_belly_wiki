@@ -39,3 +39,4 @@ export const BeanCard = React.forwardRef<HTMLDivElement, { item: BeanType }>(
     );
   }
 );
+BeanCard.displayName = "BeanCard";

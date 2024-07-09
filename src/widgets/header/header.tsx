@@ -3,7 +3,6 @@
 import { MobileMenu } from "./mobileMenu/mobileMenu";
 import Link from "next/link";
 import { useSelectedLayoutSegment } from "next/navigation";
-import clsx from "clsx";
 import { SectionService } from "@/features/sections";
 import { ColorSchemeSwitch } from "@/features/colorSchemeSwitch";
 
@@ -26,10 +25,10 @@ export const Header = () => {
           {SectionService.sections.map((section) => (
             <Link
               key={section}
-              className={clsx(
-                "px-5 cursor-pointer hover:underline underline-offset-2",
-                currentPageName === section && "underline"
-              )}
+              className={
+                "px-5 cursor-pointer hover:underline underline-offset-2 " +
+                (currentPageName === section ? "underline" : "")
+              }
               href={"/" + section}
             >
               {SectionService.sectionsConfiguration[section].sectionName}
@@ -37,22 +36,6 @@ export const Header = () => {
           ))}
         </div>
         <ColorSchemeSwitch />
-
-        {/* <label className="flex flex-col items-start relative w-36">
-          <input
-            type="search"
-            className="peer/search w-full rounded-lg bg-bg4 px-2"
-            placeholder=" "
-          />
-          <span
-            className="peer-focus/search:opacity-0 
-                  				peer-[:not(:placeholder-shown)]/search:opacity-0 
-                  				transition-opacity h-0 flex items-center relative bottom-3"
-          >
-            <SearchIcon className="w-4 h-4 mx-2" />
-            Поиск
-          </span>
-        </label> */}
       </div>
     </header>
   );

@@ -1,7 +1,4 @@
-import { FactType, TypesOfItems } from "@/entities/item";
-import Link from "next/link";
-import { SectionService } from "@/features/sections";
-import Image from "next/image";
+import { FactType } from "@/entities/item";
 import React from "react";
 
 export const FactCard = React.forwardRef<HTMLDivElement, { item: FactType }>(
@@ -25,3 +22,4 @@ export const FactCard = React.forwardRef<HTMLDivElement, { item: FactType }>(
     );
   }
 );
+FactCard.displayName = "FactCard";

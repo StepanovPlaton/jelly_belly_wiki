@@ -10,7 +10,7 @@ export async function generateMetadata({
 }: {
   params: { section: string; item_id: number };
 }): Promise<Metadata> {
-  if (!SectionService.isSection(section)) redirect("/"); //
+  if (!SectionService.isSection(section)) redirect("/");
   return {
     title: `JellyBelly: ${SectionService.sectionsConfiguration[section].sectionName}`,
   };

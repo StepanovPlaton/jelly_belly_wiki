@@ -1,7 +1,3 @@
-import { TypesOfItems } from "@/entities/item";
-import Link from "next/link";
-import { SectionService } from "@/features/sections";
-import Image from "next/image";
 import React from "react";
 import { MileStoneType } from "@/entities/item/mileStones";
 
@@ -24,3 +20,4 @@ export const MileStoneCard = React.forwardRef<
     </div>
   );
 });
+MileStoneCard.displayName = "MileStoneCard";

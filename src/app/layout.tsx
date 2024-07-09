@@ -1,15 +1,9 @@
-import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "next-themes";
 import { Header } from "@/widgets/header";
 
 const inter = Inter({ subsets: ["latin"] });
-
-export const metadata: Metadata = {
-  title: "Jelly Belly Wiki",
-  description: "Information about everything Jelly belly",
-};
 
 export default function RootLayout({
   children,

@@ -1,4 +1,4 @@
-import { BeanType, RecipeType, TypesOfItems } from "@/entities/item";
+import { RecipeType, TypesOfItems } from "@/entities/item";
 import Link from "next/link";
 import { SectionService } from "@/features/sections";
 import Image from "next/image";
@@ -40,3 +40,4 @@ export const RecipeCard = React.forwardRef<
     </div>
   );
 });
+RecipeCard.displayName = "RecipeCard";

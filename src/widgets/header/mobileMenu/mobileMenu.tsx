@@ -1,7 +1,6 @@
 "use client";
 
 import { SectionService } from "@/features/sections";
-import clsx from "clsx";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -19,20 +18,15 @@ export const MobileMenu = () => {
         }}
         onBlur={() => changeMenuOpen(false)}
       >
-        <div
-          className={clsx(open && "rotate-45 top-4", !open && "top-0")}
-        ></div>
-        <div className={clsx(open && "opacity-0")}></div>
-        <div
-          className={clsx(open && "-rotate-45 bottom-4", !open && "bottom-0")}
-        ></div>
+        <div className={open ? "rotate-45 top-4" : "top-0"}></div>
+        <div className={open ? "opacity-0" : ""}></div>
+        <div className={open ? "-rotate-45 bottom-4" : "bottom-0"}></div>
       </button>
       <div
-        className={clsx(
+        className={
           "h-0 absolute transition-all duration-300 overflow-hidden\
-					bg-bg4 rounded-lg px-4 flex flex-col shadow-xl",
-          open && "h-56"
-        )}
+					bg-bg4 rounded-lg px-4 flex flex-col shadow-xl " + (open ? "h-56" : "")
+        }
         onClick={() => changeMenuOpen(false)}
       >
         {SectionService.sections.map((section) => (

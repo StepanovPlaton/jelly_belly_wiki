@@ -1,36 +1,57 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# JellyBelly Wiki
+> JellyBelly Wiki - сайт о бобах JellyBelly
 
-## Getting Started
 
-First, run the development server:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Стек
+- TypeScript
+- React 18
+- Next.js 14 (App Router)
+- Tailwind CSS
+- Zod
+- next-themes
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## О проекте
+- Написан за 10 часов (с использованием произвольных библиотек и snippet-ов прошлых проектов), в качестве тестового задания перед собеседованием
+- Основан на открытом API https://jelly-belly-wiki.netlify.app
+- Server Side Rendering (SSR) - в ответ на запрос пользователя сервер отправляет сгенерированный HTML заполненный контентом, а затем загружается весь необходимый для работы JavaScript. Для пользователя страница загружается быстрее
+- Search Engine Optimization (SEO) - благодаря SSR поисковые боты могут индексировать страницы (в отличии от приложений написанных с использованием SPA подхода)
+- Адаптивная верстка
+  - Поддержка мобильных устройств (в том числе планшетов)
+  - Верстка на основе rem
+  - Автоматическое масштабирование для малых и больших разрешений (сайт выглядит одинаково при любых разрешениях 16:9)
+- Написан в соответствии с [Feature-Sliced Design (FSD)](https://feature-sliced.design/ru/)
+- Легко масштабируемый
+  - Сущности, для которых необходимо реализовать общий функционал (например ленивую загрузку карточек) объедены абстракцией [item](./src//entities//item/) - это позволяет переиспользовать компонент [Grid](./src/widgets/grid/), а так же писать компоненты обёртки, например [ItemCard](./src/features/itemCard/) или [ItemInfo](./src/features/itemInfo/)
+  - Каждой сущности в рамках [item](./src//entities//item/), поставлена в соответствие секция [section](./src/features/sections/) - это позволяет написать переискользуемую страницу [\[section\]](./src/app/%5Bsection%5D/) и динамический [header](./src/widgets/header/)
+  - Вместе эти уровни абстракции позволяют, при необходимости, легко добавить новые сущности
+- Валидация данных с помощью схем Zod
+  - Все данные, полученные с API валидируются с помощью библиотеки Zod
+  - При получении списка объектов, каждый валидируется отдельно, в случае возникновения ошибок, бракованный объект удаляется из списка, а остальные данные поступают в рендер - это обеспечивает отказоустойчивость, при единичных ошибках в данных
+- Lazy loading - новые карточки подгружаются по мере необходимости при просмотре (скроллинге) страницы
+- Используется цветовая схема [Solarized](https://en.wikipedia.org/wiki/Solarized). Есть возможность переключения между тёмной и светлой схемой
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Скриншоты
 
-## Learn More
+#### Desktop (HD+)
+|![](./screenshots/HD%2B_root_dark.png)|![](./screenshots/HD%2B_root_light.png)|
+|-|-|
+|![](./screenshots/HD%2B_beans_light.png)|![](./screenshots/HD%2B_recipes_dark.png)|
+|![](./screenshots/HD%2B_bean_light.png)|![](./screenshots/HD%2B_recipe_dark.png)|
 
-To learn more about Next.js, take a look at the following resources:
+#### Tablet (iPad)
+|![](./screenshots/iPad_beans_light.png)|![](./screenshots/iPad_recipes_dark.png)|
+|-|-|
+|![](./screenshots/iPad_bean_light.png)|![](./screenshots/iPad_recipe_dark.png)|
+|![](./screenshots/iPad_history_light.png)|![](./screenshots/iPad_facts_dark.png)|
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+#### Mobile (iPhoneX)
+|![](./screenshots/iPhoneX_beans_light.png)|![](./screenshots/iPhoneX_bean_light.png)|![](./screenshots/iPhoneX_combinations_light.png)|
+|-|-|-|
+|![](./screenshots/iPhoneX_recipes_dark.png)|![](./screenshots/iPhoneX_recipe_dark.png)|![](./screenshots/iPhoneX_facts_dark.png)|
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Запуск
+#### Локально
+    npm install
+    npm run dev

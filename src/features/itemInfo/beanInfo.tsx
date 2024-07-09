@@ -28,7 +28,9 @@ export const BeanInfo = ({ item: bean }: { item: BeanType }) => {
             <ul>
               {bean.ingredients.length > 0 &&
                 bean.ingredients.map((ingredient) => (
-                  <li className="text-sm tb:text-xs">- {ingredient}</li>
+                  <li className="text-sm tb:text-xs" key={ingredient}>
+                    - {ingredient}
+                  </li>
                 ))}
             </ul>
             {bean.ingredients.length == 0 && (
@@ -40,7 +42,9 @@ export const BeanInfo = ({ item: bean }: { item: BeanType }) => {
               In theese groups:
               <ul>
                 {bean.groupName.map((group) => (
-                  <li className="text-sm">- {group}</li>
+                  <li className="text-sm" key={group}>
+                    - {group}
+                  </li>
                 ))}
               </ul>
             </div>
@@ -52,7 +56,7 @@ export const BeanInfo = ({ item: bean }: { item: BeanType }) => {
                     BeanPropertyDescription
                   ) as (keyof typeof BeanPropertyDescription)[]
                 ).map((property) => (
-                  <li className="text-sm flex items-center pt-1">
+                  <li className="text-sm flex items-center pt-1" key={property}>
                     - {BeanPropertyDescription[property]}:{" "}
                     {bean[property] ? (
                       <CheckIcon className="h-5 pl-2" />

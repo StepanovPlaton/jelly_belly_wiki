@@ -38,39 +38,35 @@ export const RecipeInfo = ({ item: recipe }: { item: RecipeType }) => {
                 RecipeСookingDescription
               ) as (keyof typeof RecipeСookingDescription)[]
             ).map((property) => (
-              <>
-                <span className="text-lg">
-                  {(recipe[property] as string[]).length > 0 &&
-                    RecipeСookingDescription[property] + ":"}
-                </span>
+              <div key={property} className="pt-1">
+                {(recipe[property] as string[]).length > 0 &&
+                  RecipeСookingDescription[property] + ":"}
                 <ul>
                   {(recipe[property] as string[]).length > 0 &&
                     (recipe[property] as string[]).map((ingredient) => (
-                      <li className="text-sm tb:text-xs">- {ingredient}</li>
+                      <li className="text-sm tb:text-xs" key={ingredient}>
+                        - {ingredient}
+                      </li>
                     ))}
                 </ul>
-              </>
+              </div>
             ))}
           </div>
           <div className=" w-full tb:w-[35%]">
             <div className="py-2">
-              <span className="text-lg">How long does it take:</span>
+              How long does it take:
               <ul>
                 {(
                   Object.keys(
                     RecipePropertyDescription
                   ) as (keyof typeof RecipePropertyDescription)[]
                 ).map((property) => (
-                  <>
-                    {
-                      <li className="text-sm flex items-center pt-1">
-                        {`- ${RecipePropertyDescription[property]}: ${recipe[property]}`}
-                        {recipe[property] == "" && (
-                          <span className="text-fg4 pl-1">Classified</span>
-                        )}
-                      </li>
-                    }
-                  </>
+                  <li className="text-sm flex items-center" key={property}>
+                    {`- ${RecipePropertyDescription[property]}: ${recipe[property]}`}
+                    {recipe[property] == "" && (
+                      <span className="text-fg4 pl-1">Classified</span>
+                    )}
+                  </li>
                 ))}
               </ul>
             </div>
@@ -80,18 +76,18 @@ export const RecipeInfo = ({ item: recipe }: { item: RecipeType }) => {
                   RecipeIngredientsDescription
                 ) as (keyof typeof RecipeIngredientsDescription)[]
               ).map((property) => (
-                <>
-                  <span className="text-lg">
-                    {(recipe[property] as string[]).length > 0 &&
-                      RecipeIngredientsDescription[property] + ":"}
-                  </span>
+                <span key={property}>
+                  {(recipe[property] as string[]).length > 0 &&
+                    RecipeIngredientsDescription[property] + ":"}
                   <ul>
                     {(recipe[property] as string[]).length > 0 &&
                       (recipe[property] as string[]).map((ingredient) => (
-                        <li className="text-sm tb:text-xs">- {ingredient}</li>
+                        <li className="text-sm tb:text-xs" key={ingredient}>
+                          - {ingredient}
+                        </li>
                       ))}
                   </ul>
-                </>
+                </span>
               ))}
             </div>
           </div>
