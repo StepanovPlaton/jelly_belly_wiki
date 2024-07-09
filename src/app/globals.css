@@ -3,31 +3,72 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --color-bg0: #fdf6e3;
+  --color-bg1: #eee8d5;
+  --color-bg4: #839496;
+
+  --color-fg0: #002b36;
+  --color-fg1: #073642;
+  --color-fg4: #657b83;
+
+  --color-ac0: #268bd2;
+  --color-ac1: #859900;
+  --color-ac2: #b58900;
+
+  --color-err: #dc322f;
+
+  --app-width: 70%;
+  font-size: calc((100vw / 1920) * 20);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+[data-theme="dark"] {
+  --color-bg0: #002b36;
+  --color-bg1: #073642;
+  --color-bg4: #657b83;
+
+  --color-fg0: #fdf6e3;
+  --color-fg1: #eee8d5;
+  --color-fg4: #839496;
+
+  --color-ac0: #268bd2;
+  --color-ac1: #859900;
+  --color-ac2: #b58900;
+
+  --color-err: #dc322f;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  transition-property: color, background-color, border-color;
+  transition-duration: 0.3s;
+
+  color: var(--color-fg1);
+  background-color: var(--color-bg0);
+
+
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+body * {
+  scrollbar-color: var(--color-ac0) var(--color-bg1);
+  scrollbar-width: thin;
+}
+
+@media (max-width: 1024px) {
+  :root {
+    font-size: calc((100vw / 1920) * 56);
+    --app-width: 100%;
+  }
+}
+
+@media (max-width: 640px) {
+  :root {
+    font-size: calc((100vw / 1920) * 64);
   }
 }
